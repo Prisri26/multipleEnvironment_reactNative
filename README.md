@@ -142,7 +142,7 @@ This project is private and proprietary.
 
 ## 👥 Authors
 
-- Your Name - Initial work
+- Prithivirajan C - Initial work
 
 ## 🙏 Acknowledgments
 
