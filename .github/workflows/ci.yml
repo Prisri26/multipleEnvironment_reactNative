@@ -72,7 +72,14 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: Nexus 6
-          script: echo "Emulator started"
+          script: |
+            echo "Waiting for emulator to boot..."
+            adb wait-for-device
+            echo "Emulator is online"
+            adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+            echo "Emulator is fully booted"
+            adb shell input keyevent 82
+            echo "Emulator is ready"
         
       - name: Build Android
         run: |
