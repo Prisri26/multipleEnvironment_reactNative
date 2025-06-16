@@ -23,7 +23,10 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm audit fix || true
+          npm audit || true
         
       - name: Run linting
         run: npm run lint
@@ -54,7 +57,10 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm audit fix || true
+          npm audit || true
         
       - name: Build Android
         run: |
@@ -93,7 +99,10 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm audit fix || true
+          npm audit || true
         
       - name: Install iOS dependencies
         run: |
