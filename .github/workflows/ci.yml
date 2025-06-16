@@ -91,11 +91,16 @@ jobs:
           JAVA_HOME: ${{ env.JAVA_HOME }}
           GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
 
+      - name: List build outputs
+        run: |
+          cd android/app/build/outputs
+          ls -R
+
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: android-${{ matrix.environment }}-apk
-          path: android/app/build/outputs/apk/${{ matrix.environment }}/debug/app-${{ matrix.environment }}-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
   build-ios:
