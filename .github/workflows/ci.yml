@@ -116,6 +116,18 @@ jobs:
           npm audit fix || true
           npm audit || true
         
+      - name: Fix Podfile
+        run: |
+          cd ios
+          # Remove duplicate post_install hooks
+          sed -i '' '/post_install do |installer|/,/end/d' Podfile
+          # Add single post_install hook
+          echo '
+          post_install do |installer|
+            react_native_post_install(installer)
+            __apply_Xcode_12_5_M1_post_install_workaround(installer)
+          end' >> Podfile
+        
       - name: Install iOS dependencies
         run: |
           cd ios
