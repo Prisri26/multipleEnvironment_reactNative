@@ -74,10 +74,41 @@ jobs:
           profile: Nexus 6
           script: |
             echo "Waiting for emulator to boot..."
+            adb kill-server
+            adb start-server
             adb wait-for-device
             echo "Emulator is online"
+            
+            # Function to check if device is online
+            check_device() {
+              adb devices | grep -q "emulator-5554.*device"
+              return $?
+            }
+            
+            # Wait for device to be online with retries
+            max_attempts=30
+            attempt=1
+            while [ $attempt -le $max_attempts ]; do
+              if check_device; then
+                echo "Device is online"
+                break
+              fi
+              echo "Attempt $attempt: Device is offline, waiting..."
+              sleep 2
+              attempt=$((attempt + 1))
+            done
+            
+            if [ $attempt -gt $max_attempts ]; then
+              echo "Failed to get device online after $max_attempts attempts"
+              exit 1
+            fi
+            
+            # Wait for boot completion
+            echo "Waiting for boot completion..."
             adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
             echo "Emulator is fully booted"
+            
+            # Unlock screen
             adb shell input keyevent 82
             echo "Emulator is ready"
         
