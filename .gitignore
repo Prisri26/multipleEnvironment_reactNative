@@ -1,39 +1,96 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# OSX
+#
+.DS_Store
 
-# dependencies
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+
+# node.js
+#
 node_modules/
+npm-debug.log
+yarn-error.log
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+!debug.keystore
+
+# Bundle artifacts
+*.jsbundle
+
+# CocoaPods
+/ios/Pods/
 
 # Expo
 .expo/
-dist/
 web-build/
-expo-env.d.ts
+dist/
 
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
+# builds
+builds
 
-# Metro
-.metro-health-check*
+#codepush
+private-devQaStg.pem
+public-devQaStg.pem
+private-prod.pem
+public-prod.pem
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+#Appcenter analytics
+AppCenter-Config.plist
+appcenter-config.json
 
-# macOS
-.DS_Store
-*.pem
+#Swagger
+!generated/api/dist
+tsconfig.tsbuildinfo
 
-# local env files
-.env*.local
+# fastlane
+ios/fastlane/.env.*
+ios/fastlane/.env
+!ios/fastlane/.env.template
+*.dSYM.zip
+fastlaneBuilds/
+ios/fastlane/apns
+ios/fastlane/report.xml
+ios/fastlane/Preview.html
+ios/fastlane/README.md
 
-# typescript
-*.tsbuildinfo
+# Firebase
+google-services.json
+GoogleService-Info.plist
 
-app-example
+#Local Todo
+*.todo
+
+# .env Files
+/.env.development
+/.env.qa
+/.env.staging
+/.env.production

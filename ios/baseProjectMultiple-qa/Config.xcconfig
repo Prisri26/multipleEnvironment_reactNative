@@ -1,0 +1,18 @@
+#include "Pods/Target Support Files/Pods-baseProjectMultiple/Pods-baseProjectMultiple.debug.xcconfig"
+#include "${BUILT_PRODUCTS_DIR}/environment.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = $(BUNDLE_IDENTIFIER)
+PRODUCT_NAME = baseProjectMultiple
+DISPLAY_NAME = baseProjectMultiple QA
+INFOPLIST_FILE = $(SRCROOT)/baseProjectMultiple-qa/Info.plist
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+CODE_SIGN_IDENTITY = iPhone Developer
+CODE_SIGN_STYLE = Automatic
+PROVISIONING_PROFILE_SPECIFIER = 
+ENABLE_BITCODE = NO
+IPHONEOS_DEPLOYMENT_TARGET = 12.0
+TARGETED_DEVICE_FAMILY = 1,2
+
+# Version Information
+MARKETING_VERSION = 1.0.0
+CURRENT_PROJECT_VERSION = 1 

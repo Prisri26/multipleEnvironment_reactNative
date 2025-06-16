@@ -5,10 +5,25 @@
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "ios:dev": "EXPO_PUBLIC_ENV=development expo run:ios --scheme baseProjectMultiple-development",
+    "ios:qa": "EXPO_PUBLIC_ENV=qa expo run:ios --scheme baseProjectMultiple-qa",
+    "ios:stage": "EXPO_PUBLIC_ENV=staging expo run:ios --scheme baseProjectMultiple-stage",
+    "ios:prod": "EXPO_PUBLIC_ENV=production expo run:ios --scheme baseProjectMultiple",
+    "android:dev": "EXPO_PUBLIC_ENV=development expo run:android --variant devDebug",
+    "android:qa": "EXPO_PUBLIC_ENV=qa expo run:android --variant qaDebug",
+    "android:stage": "EXPO_PUBLIC_ENV=staging expo run:android --variant stageDebug",
+    "android:prod": "EXPO_PUBLIC_ENV=production expo run:android --variant debug",
+    "start:dev": "EXPO_PUBLIC_ENV=development expo start",
+    "start:qa": "EXPO_PUBLIC_ENV=qa expo start",
+    "start:stage": "EXPO_PUBLIC_ENV=staging expo start",
+    "start:prod": "EXPO_PUBLIC_ENV=production expo start",
+    "generate:env": "ts-node scripts/generate-env-config.ts",
+    "android:release": "ts-node scripts/android-release.ts",
+    "generate:images": "ts-node scripts/generate-images.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -43,7 +58,11 @@
     "@types/react": "~19.0.10",
     "typescript": "~5.8.3",
     "eslint": "^9.25.0",
-    "eslint-config-expo": "~9.2.0"
+    "eslint-config-expo": "~9.2.0",
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.6",
+    "@types/inquirer": "^8.2.6",
+    "ts-node": "^10.9.2"
   },
   "private": true
 }

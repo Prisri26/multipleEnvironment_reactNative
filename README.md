@@ -1,50 +1,150 @@
-# Welcome to your Expo app 👋
+# Base Project Multiple
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application built with Expo, featuring multiple environment configurations for development, QA, staging, and production.
 
-## Get started
+## 🚀 Features
 
-1. Install dependencies
+- Built with React Native and Expo
+- Multiple environment configurations (Development, QA, Staging, Production)
+- TypeScript support
+- Expo Router for navigation
+- Vector Icons integration
+- Gesture handling support
+- Safe area context management
+- WebView support
+- Blur effects
+- Haptic feedback
+- Image optimization
+- Splash screen management
 
-   ```bash
-   npm install
-   ```
+## 📋 Prerequisites
 
-2. Start the app
+- Node.js (Latest LTS version recommended)
+- npm or yarn
+- Expo CLI
+- iOS Simulator (for iOS development)
+- Android Studio (for Android development)
 
-   ```bash
-   npx expo start
-   ```
+## 🛠 Installation
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone [your-repository-url]
+cd baseprojectmultiple
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-## Learn more
+3. Generate environment configurations:
+```bash
+npm run generate:env
+# or
+yarn generate:env
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🏃‍♂️ Running the App
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Development
 
-## Join the community
+```bash
+# Start development server
+npm run start:dev
+# or
+yarn start:dev
+```
 
-Join our community of developers creating universal apps.
+### iOS
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+# Development
+npm run ios:dev
+# QA
+npm run ios:qa
+# Staging
+npm run ios:stage
+# Production
+npm run ios:prod
+```
+
+### Android
+
+```bash
+# Development
+npm run android:dev
+# QA
+npm run android:qa
+# Staging
+npm run android:stage
+# Production
+npm run android:prod
+```
+
+## 📱 Available Scripts
+
+- `npm start` - Start the Expo development server
+- `npm run android` - Run on Android device/emulator
+- `npm run ios` - Run on iOS simulator
+- `npm run web` - Run in web browser
+- `npm run lint` - Run ESLint
+- `npm run reset-project` - Reset project configuration
+- `npm run generate:images` - Generate image assets
+- `npm run android:release` - Generate Android release build
+
+## 🏗 Project Structure
+
+```
+baseprojectmultiple/
+├── app/                 # Main application code
+├── assets/             # Static assets
+├── components/         # Reusable components
+├── constants/          # Constants and configuration
+├── hooks/              # Custom React hooks
+├── scripts/            # Build and utility scripts
+└── src/               # Source code
+```
+
+## 🔧 Environment Configuration
+
+The project supports multiple environments:
+- Development
+- QA
+- Staging
+- Production
+
+Environment-specific configurations can be set using the `EXPO_PUBLIC_ENV` variable.
+
+## 📦 Dependencies
+
+Key dependencies include:
+- expo: ~53.0.10
+- react: 19.0.0
+- react-native: 0.79.3
+- expo-router: ~5.0.7
+- react-native-gesture-handler: ~2.24.0
+- react-native-reanimated: ~3.17.4
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 👥 Authors
+
+- Your Name - Initial work
+
+## 🙏 Acknowledgments
+
+- Expo team for the amazing framework
+- React Native community
