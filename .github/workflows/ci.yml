@@ -127,15 +127,20 @@ jobs:
           sudo gem install cocoapods
           cd ios
           pod install --repo-update
+
+      - name: List Xcode Schemes
+        run: |
+          cd ios
+          xcodebuild -list -workspace baseProjectMultiple.xcworkspace
         
       - name: Build iOS
         run: |
           if [ "${{ matrix.environment }}" = "development" ]; then
-            npx expo run:ios --scheme baseProjectMultiple-development
+            npx expo run:ios --scheme baseProjectMultiple
           elif [ "${{ matrix.environment }}" = "qa" ]; then
-            npx expo run:ios --scheme baseProjectMultiple-qa
+            npx expo run:ios --scheme baseProjectMultiple
           elif [ "${{ matrix.environment }}" = "staging" ]; then
-            npx expo run:ios --scheme baseProjectMultiple-stage
+            npx expo run:ios --scheme baseProjectMultiple
           else
             npx expo run:ios --scheme baseProjectMultiple
           fi
