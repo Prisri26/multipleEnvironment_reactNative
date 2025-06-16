@@ -115,34 +115,29 @@ jobs:
           npm ci
           npm audit fix || true
           npm audit || true
-        
-      - name: Fix Podfile
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install CocoaPods
         run: |
+          sudo gem install cocoapods
           cd ios
-          # Remove duplicate post_install hooks
-          sed -i '' '/post_install do |installer|/,/end/d' Podfile
-          # Add single post_install hook
-          echo '
-          post_install do |installer|
-            react_native_post_install(installer)
-            __apply_Xcode_12_5_M1_post_install_workaround(installer)
-          end' >> Podfile
+          pod install --repo-update
         
-      - name: Install iOS dependencies
-        run: |
-          cd ios
-          pod install
-          
       - name: Build iOS
         run: |
           if [ "${{ matrix.environment }}" = "development" ]; then
-            npm run ios:dev
+            npx expo run:ios --scheme baseProjectMultiple-development
           elif [ "${{ matrix.environment }}" = "qa" ]; then
-            npm run ios:qa
+            npx expo run:ios --scheme baseProjectMultiple-qa
           elif [ "${{ matrix.environment }}" = "staging" ]; then
-            npm run ios:stage
+            npx expo run:ios --scheme baseProjectMultiple-stage
           else
-            npm run ios:prod
+            npx expo run:ios --scheme baseProjectMultiple
           fi
         env:
           EXPO_PUBLIC_ENV: ${{ matrix.environment }}
