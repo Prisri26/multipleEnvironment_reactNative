@@ -61,6 +61,18 @@ jobs:
           npm ci
           npm audit fix || true
           npm audit || true
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          profile: Nexus 6
+          script: echo "Emulator started"
         
       - name: Build Android
         run: |
