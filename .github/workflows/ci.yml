@@ -9,6 +9,10 @@ on:
 env:
   NODE_VERSION: '18'
   JAVA_VERSION: '17'
+  ANDROID_HOME: /usr/local/lib/android/sdk
+  ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+  ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/25.1.8937393
+  ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk/25.1.8937393
 
 jobs:
   test:
@@ -70,16 +74,22 @@ jobs:
           cd android
           ./gradlew clean
           if [ "${{ matrix.environment }}" = "development" ]; then
-            ./gradlew assembleDebug -Penv=development
+            ./gradlew assembleDebug -Penv=development -PdisablePreDex
           elif [ "${{ matrix.environment }}" = "qa" ]; then
-            ./gradlew assembleDebug -Penv=qa
+            ./gradlew assembleDebug -Penv=qa -PdisablePreDex
           elif [ "${{ matrix.environment }}" = "staging" ]; then
-            ./gradlew assembleDebug -Penv=staging
+            ./gradlew assembleDebug -Penv=staging -PdisablePreDex
           else
-            ./gradlew assembleDebug -Penv=production
+            ./gradlew assembleDebug -Penv=production -PdisablePreDex
           fi
         env:
           EXPO_PUBLIC_ENV: ${{ matrix.environment }}
+          ANDROID_HOME: ${{ env.ANDROID_HOME }}
+          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
+          ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_HOME }}
+          ANDROID_NDK_ROOT: ${{ env.ANDROID_NDK_ROOT }}
+          JAVA_HOME: ${{ env.JAVA_HOME }}
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError"
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
